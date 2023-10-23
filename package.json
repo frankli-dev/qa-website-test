@@ -1,12 +1,12 @@
 {
-  "name": "react-typescript-starter",
-  "description": "Minimalist React 18 starter template with TypeScript ⚛",
+  "name": "qa-website-test",
+  "description": "Q & A Website Frontend Test",
   "version": "1.0.0",
   "main": "src/index.tsx",
-  "repository": "https://github.com/GR34SE/react-typescript-starter.git",
+  "repository": "https://github.com/frankli-dev/qa-website-test",
   "license": "MIT",
   "scripts": {
-    "develop": "webpack-cli serve --mode=development --env development --open --hot",
+    "start": "webpack-cli serve --mode=development --env development --open --hot",
     "build": "webpack --mode=production --env production --progress",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint './src/**/*.{ts,tsx,js,jsx}' --fix"
@@ -31,9 +31,9 @@
     "prettier": "2.8.8",
     "ts-loader": "9.4.4",
     "ts-node": "10.9.1",
-    "tsconfig-paths-webpack-plugin": "3.5.2",
+    "tsconfig-paths-webpack-plugin": "3.5.1",
     "typescript": "4.9.5",
-    "webpack": "5.88.2",
+    "webpack": "5.51.1",
     "webpack-cli": "4.10.0",
     "webpack-dev-server": "4.15.1"
   },
