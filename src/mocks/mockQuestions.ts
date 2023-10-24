@@ -8,8 +8,8 @@ export const question_1: Question = {
   vote: 38,
   user: user_derek,
   tags: ["javascript", "angularjs", "node.js", "express", "request-cancelling"],
-  asked_at: "2023-10-24T14:42:30.532Z",
-  last_edited_at: "2023-10-24T14:42:30.532Z",
+  askedAt: "2023-10-24T14:42:30.532Z",
+  lastEditedAt: "2023-10-24T14:42:30.532Z",
   content: `                
     <p>When a pending HTTP request is cancelled by a client/browser it seems that Node with Express continues to process the request. For intensive requests, the CPU is still being kept busy with unnecessary requests.</p>
 

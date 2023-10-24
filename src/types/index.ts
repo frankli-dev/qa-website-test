@@ -10,8 +10,8 @@ export type User = {
 export type Comment = {
   id: string;
   vote: number;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  updatedAt: string;
   user: User;
 };
 
@@ -19,7 +19,7 @@ export type Answer = {
   id: string;
   vote: number;
   user: User;
-  answered_at: string;
+  answeredAt: string;
   content: string;
   comments: Comment[];
 };
@@ -31,8 +31,8 @@ export type Question = {
   vote: number;
   user: User;
   tags: string[];
-  asked_at: string;
-  last_edited_at: string;
+  askedAt: string;
+  lastEditedAt: string;
   content: string;
   answers: Answer[];
   comments: Comment[];
