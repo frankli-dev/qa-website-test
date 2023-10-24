@@ -23,7 +23,7 @@ export const QuestionHeader: React.FC<QuestionHeaderProps> = ({
   return (
     <div className="flex flex-col">
       <div className="flex justify-between align-top mb-[8px]">
-        <h1 className="text-title">{title}</h1>
+        <h1 className="text-headline1">{title}</h1>
 
         <Button variant="filled" text="Ask Question" />
       </div>
