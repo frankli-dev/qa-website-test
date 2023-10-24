@@ -1,20 +1,14 @@
 import { lazy } from "react";
 
-const ProfilePage = lazy(() => import("../pages/Profile"));
-const HomePage = lazy(() => import("../pages/Home"));
+const QAPage = lazy(() => import("../pages/QA"));
 
-export const PROFILE = "/profile/:username";
-export const Home = "/";
+export const QA = "/";
 
 const routes = [
-    {
-        path: Home,
-        element: HomePage,
-    },
-    {
-        path: PROFILE,
-        element: ProfilePage,
-    },
+  {
+    path: QA,
+    element: QAPage,
+  },
 ];
 
 export default routes;
