@@ -1,8 +1,13 @@
+import { Header } from "components/Header";
+
 const QA = () => {
   return (
     <div>
-      <header>Header</header>
-      <div id="container">
+      <Header />
+      <div
+        id="container"
+        className="flex mt-[56px] max-w-[1264px] w-full mx-auto my-0 justify-between"
+      >
         <div id="left-sidebar">Left bar</div>
         <div id="content">
           <div id="question-header" className="d-flex sm:fd-column">
