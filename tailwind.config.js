@@ -12,6 +12,7 @@ module.exports = {
         "blue-200": "hsl(206,93%,83.5%)",
         "blue-500": "hsl(210,77%,36%)",
         "black-225": "hsl(210, 8%, 85%)",
+        "black-500": "hsl(210, 8%, 25%)",
       },
       animation: {
         bounce1: "bounce 1s infinite 200ms",
@@ -19,6 +20,12 @@ module.exports = {
       },
       backgroundImage: {
         sprites: "url(../public/sprites.svg)",
+      },
+      spacing: {
+        header: "56px",
+        "left-bar": "164px",
+        "content-x": "calc(100vw - 164px)",
+        "content-y": "calc(100vh - 56px)",
       },
     },
   },
