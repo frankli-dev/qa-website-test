@@ -1,7 +1,6 @@
 import { Comment, User } from "types";
 import * as DOMPurify from "dompurify";
 import classNames from "classnames";
-import { formatDistanceToNowStrict, format } from "date-fns";
 import { ReactComponent as ArrowUpIcon } from "../icons/arrowUp.svg";
 import { ReactComponent as ArrowDownIcon } from "../icons/arrowDown.svg";
 import { ReactComponent as BookmarkIcon } from "../icons/bookmark.svg";
