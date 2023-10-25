@@ -5,8 +5,8 @@ const answer_1: Answer = {
   id: "1",
   vote: 36,
   user: user_derek,
-  createdAt: "2023-10-24T14:42:30.532Z",
-  updatedAt: "2023-10-24T14:42:30.532Z",
+  createdAt: "2023-03-24T14:42:30.532Z",
+  updatedAt: "2023-03-24T14:42:30.532Z",
   content: `
     <p>Injected <code>req</code>object is shipped with listeners <code>.on()</code>.</p>
 
@@ -92,8 +92,8 @@ const answer_2: Answer = {
   id: "2",
   vote: 10,
   user: user_rashack,
-  createdAt: "2023-10-24T14:42:30.532Z",
-  updatedAt: "2023-10-24T14:42:30.532Z",
+  createdAt: "2023-09-24T14:42:30.532Z",
+  updatedAt: "2023-09-24T14:42:30.532Z",
   content: `
     <p>With express, you can try:</p>
   
@@ -110,7 +110,7 @@ const answer_3: Answer = {
   id: "3",
   vote: -4,
   user: user_andrew,
-  createdAt: "2023-10-24T14:42:30.532Z",
+  createdAt: "2023-08-24T14:42:30.532Z",
   updatedAt: "2023-10-24T14:42:30.532Z",
   content: `
     <p>You can set a <a href="https://nodejs.org/api/http.html#http_server_timeout" rel="nofollow">timeout</a> for requests on your server:</p>
@@ -132,8 +132,8 @@ export const question_1: Question = {
   vote: 38,
   user: user_derek,
   tags: ["javascript", "angularjs", "node.js", "express", "request-cancelling"],
-  askedAt: "2023-10-24T14:42:30.532Z",
-  lastEditedAt: "2023-10-24T14:42:30.532Z",
+  askedAt: "2022-02-24T14:42:30.532Z",
+  updatedAt: "2022-02-24T18:13:30.532Z",
   content: `                
     <p>When a pending HTTP request is cancelled by a client/browser it seems that Node with Express continues to process the request. For intensive requests, the CPU is still being kept busy with unnecessary requests.</p>
 

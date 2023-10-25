@@ -1,10 +1,11 @@
-const convertdate = (date: Date) =>
-    date
-        .toLocaleDateString("en-GB", {
-            year: "numeric",
-            month: "short",
-            day: "numeric",
-        })
-        .replace(",", "");
+import { format, formatDistance } from "date-fns";
 
-export { convertdate };
+const formatDate = (date: string): string =>
+  format(new Date(date), "MMM dd, yyyy 'at' HH:mm");
+
+const formatDateAgo = (date: string): string =>
+  formatDistance(new Date(date), new Date(), {
+    addSuffix: true,
+  });
+
+export { formatDate, formatDateAgo };

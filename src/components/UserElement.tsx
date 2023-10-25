@@ -13,7 +13,7 @@ export const UserElement: React.FC<UserElementProps> = ({
 }) => {
   return (
     <div className="flex flex-col pt-[5px] pr-[6px] pb-[7px] pl-[7px] text-black-400 bg-blue-200 rounded-[4px] w-[200px]">
-      <div>{headline}</div>
+      <div className="text-[12px]">{headline}</div>
       <div className="flex items-center">
         <img
           src={`https://www.gravatar.com/avatar/${user.id}?s=256&d=identicon&r=PG`}

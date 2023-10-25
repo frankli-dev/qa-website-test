@@ -1,11 +1,13 @@
 import { Comment, User } from "types";
 import * as DOMPurify from "dompurify";
 import classNames from "classnames";
+import { formatDistanceToNowStrict, format } from "date-fns";
 import { ReactComponent as ArrowUpIcon } from "../icons/arrowUp.svg";
 import { ReactComponent as ArrowDownIcon } from "../icons/arrowDown.svg";
 import { ReactComponent as BookmarkIcon } from "../icons/bookmark.svg";
 import { ReactComponent as ActivityIcon } from "../icons/activity.svg";
 import { UserElement } from "./UserElement";
+import { formatDate } from "utils/date";
 
 interface QuestionAnswerItemProps {
   vote: number;
@@ -85,9 +87,16 @@ export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
             Follow
           </a>
           <a href="/" className="ml-auto text-blue-500 mr-8">
-            edited Feb 4, 2016 at 13:39
+            {`edited ${formatDate(editedAt)}`}
           </a>
-          <UserElement user={user} headline="asked Feb 4, 2016 at 10:15" />
+          <UserElement
+            user={user}
+            headline={
+              isAnswer
+                ? `answered ${formatDate(createdAt)}`
+                : `asked ${formatDate(createdAt)}`
+            }
+          />
         </div>
         <div className="flex">
           <a href="/" className="text-black-300">

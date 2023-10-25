@@ -33,7 +33,7 @@ export type Question = {
   user: User;
   tags: string[];
   askedAt: string;
-  lastEditedAt: string;
+  updatedAt: string;
   content: string;
   answers: Answer[];
   comments: Comment[];

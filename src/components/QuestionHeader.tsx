@@ -1,3 +1,4 @@
+import { formatDateAgo } from "utils/date";
 import { Button } from "./Button";
 
 interface QuestionHeaderProps {
@@ -28,9 +29,9 @@ export const QuestionHeader: React.FC<QuestionHeaderProps> = ({
         <Button variant="filled" text="Ask Question" />
       </div>
       <div className="flex pb-[8px] mb-[16px] border-b border-black-200">
-        <TitleItem label="Asked" value="7 years, 8 months ago" />
-        <TitleItem label="Modified" value="6 years, 10 months ago" />
-        <TitleItem label="Viewed" value="32k times" />
+        <TitleItem label="Asked" value={formatDateAgo(askedAt)} />
+        <TitleItem label="Modified" value={formatDateAgo(modifiedAt)} />
+        <TitleItem label="Viewed" value={`${view.toLocaleString()} times`} />
       </div>
     </div>
   );

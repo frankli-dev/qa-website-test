@@ -8,15 +8,15 @@ import { useQuestionContext } from "context/question";
 enum SortedBy {
   Score = "score",
   Trending = "trending",
-  Newest = "newest",
-  Oldest = "oldest",
+  Modified = "modified",
+  Created = "created",
 }
 
 const SortedByOptions: { value: SortedBy; text: string }[] = [
   { value: SortedBy.Score, text: "Highest score (default)" },
   { value: SortedBy.Trending, text: "Trending (recent votes count more)" },
-  { value: SortedBy.Newest, text: "Date modified (newest first)" },
-  { value: SortedBy.Oldest, text: "Date created (oldest first)" },
+  { value: SortedBy.Modified, text: "Date modified (newest first)" },
+  { value: SortedBy.Created, text: "Date created (oldest first)" },
 ];
 
 export const Content = () => {
@@ -24,7 +24,7 @@ export const Content = () => {
   const {
     title,
     askedAt,
-    lastEditedAt,
+    updatedAt,
     view,
     vote,
     content,
@@ -45,10 +45,18 @@ export const Content = () => {
           return a.vote > b.vote ? -1 : a.vote < b.vote ? 1 : 0;
         case SortedBy.Trending:
           return a.vote > b.vote ? -1 : a.vote < b.vote ? 1 : 0;
-        case SortedBy.Newest:
-          return a.vote > b.vote ? -1 : a.vote < b.vote ? 1 : 0;
-        case SortedBy.Oldest:
-          return a.vote > b.vote ? -1 : a.vote < b.vote ? 1 : 0;
+        case SortedBy.Modified:
+          return new Date(a.updatedAt) > new Date(b.updatedAt)
+            ? -1
+            : new Date(a.updatedAt) < new Date(b.updatedAt)
+            ? 1
+            : 0;
+        case SortedBy.Created:
+          return new Date(a.createdAt) < new Date(b.createdAt)
+            ? -1
+            : new Date(a.createdAt) > new Date(b.createdAt)
+            ? 1
+            : 0;
         default:
           return 0;
       }
@@ -60,7 +68,7 @@ export const Content = () => {
       <QuestionHeader
         title={title}
         askedAt={askedAt}
-        modifiedAt={lastEditedAt}
+        modifiedAt={updatedAt}
         view={view}
       />
       <div className="flex">
@@ -69,7 +77,7 @@ export const Content = () => {
             vote={vote}
             content={content}
             tags={tags}
-            editedAt={lastEditedAt}
+            editedAt={updatedAt}
             createdAt={askedAt}
             user={user}
             comments={comments}
