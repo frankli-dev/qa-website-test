@@ -9,7 +9,8 @@ export type User = {
 
 export type Comment = {
   id: string;
-  vote: number;
+  upVotes: string[];
+  downVotes: string[];
   createdAt: string;
   updatedAt: string;
   user: User;
@@ -17,7 +18,8 @@ export type Comment = {
 
 export type Answer = {
   id: string;
-  vote: number;
+  upVotes: string[];
+  downVotes: string[];
   user: User;
   content: string;
   comments: Comment[];
@@ -29,7 +31,8 @@ export type Question = {
   id: string;
   title: string;
   view: number;
-  vote: number;
+  upVotes: string[];
+  downVotes: string[];
   user: User;
   tags: string[];
   askedAt: string;
@@ -38,3 +41,10 @@ export type Question = {
   answers: Answer[];
   comments: Comment[];
 };
+
+export enum SortedBy {
+  Score = "score",
+  Trending = "trending",
+  Modified = "modified",
+  Created = "created",
+}

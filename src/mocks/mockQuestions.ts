@@ -3,7 +3,12 @@ import { user_andrew, user_derek, user_rashack } from "./mockUsers";
 
 const answer_1: Answer = {
   id: "1",
-  vote: 36,
+  upVotes: [
+    "2023-03-24T14:42:30.532Z",
+    "2023-03-25T14:42:30.532Z",
+    "2023-03-26T14:42:30.532Z",
+  ],
+  downVotes: ["2023-03-27T14:42:30.532Z"],
   user: user_derek,
   createdAt: "2023-03-24T14:42:30.532Z",
   updatedAt: "2023-03-24T14:42:30.532Z",
@@ -90,7 +95,8 @@ const answer_1: Answer = {
 
 const answer_2: Answer = {
   id: "2",
-  vote: 10,
+  upVotes: ["2023-09-24T14:42:30.532Z", "2023-09-25T14:42:30.532Z"],
+  downVotes: [],
   user: user_rashack,
   createdAt: "2023-09-24T14:42:30.532Z",
   updatedAt: "2023-09-24T14:42:30.532Z",
@@ -108,7 +114,12 @@ const answer_2: Answer = {
 
 const answer_3: Answer = {
   id: "3",
-  vote: -4,
+  upVotes: [],
+  downVotes: [
+    "2023-08-24T14:42:30.532Z",
+    "2023-08-25T14:42:30.532Z",
+    "2023-08-26T14:42:30.532Z",
+  ],
   user: user_andrew,
   createdAt: "2023-08-24T14:42:30.532Z",
   updatedAt: "2023-10-24T14:42:30.532Z",
@@ -129,7 +140,12 @@ export const question_1: Question = {
   id: "1",
   title: "Handling cancelled request with Express/Node.js and Angular",
   view: 32005,
-  vote: 38,
+  upVotes: [
+    "2022-02-24T14:42:30.532Z",
+    "2022-02-25T14:42:30.532Z",
+    "2022-02-26T14:42:30.532Z",
+  ],
+  downVotes: ["2022-02-27T14:42:30.532Z"],
   user: user_derek,
   tags: ["javascript", "angularjs", "node.js", "express", "request-cancelling"],
   askedAt: "2022-02-24T14:42:30.532Z",

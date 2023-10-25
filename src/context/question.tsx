@@ -16,10 +16,17 @@ export const QuestionProvider = ({ children }: PropsWithChildren<{}>) => {
   const [question, setQuestion] = useState<ContextType["question"]>(question_1);
 
   const onVoteQuestion = (isUpVote: boolean) => {
-    setQuestion({
-      ...question,
-      vote: isUpVote ? question.vote + 1 : question.vote - 1,
-    });
+    if (isUpVote) {
+      setQuestion({
+        ...question,
+        upVotes: [...question.upVotes, new Date().toISOString()],
+      });
+    } else {
+      setQuestion({
+        ...question,
+        downVotes: [...question.downVotes, new Date().toISOString()],
+      });
+    }
   };
 
   const onVoteAnswer = (id: string, isUpVote: boolean) => {
@@ -31,9 +38,15 @@ export const QuestionProvider = ({ children }: PropsWithChildren<{}>) => {
           ...question.answers.slice(0, index),
           {
             ...question.answers[index],
-            vote: isUpVote
-              ? question.answers[index].vote + 1
-              : question.answers[index].vote - 1,
+            upVotes: !isUpVote
+              ? question.answers[index].upVotes
+              : [...question.answers[index].upVotes, new Date().toISOString()],
+            downVotes: isUpVote
+              ? question.answers[index].downVotes
+              : [
+                  ...question.answers[index].downVotes,
+                  new Date().toISOString(),
+                ],
           },
           ...question.answers.slice(index + 1),
         ],

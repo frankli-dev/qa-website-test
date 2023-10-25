@@ -1,16 +1,10 @@
-import { Question } from "types";
 import { QuestionHeader } from "./QuestionHeader";
 import { SideBar } from "./SideBar";
 import { QuestionAnswerItem } from "./QuestionAnswerItem";
 import { useMemo, useState } from "react";
 import { useQuestionContext } from "context/question";
-
-enum SortedBy {
-  Score = "score",
-  Trending = "trending",
-  Modified = "modified",
-  Created = "created",
-}
+import { SortedBy } from "types";
+import { compareAnswers } from "utils";
 
 const SortedByOptions: { value: SortedBy; text: string }[] = [
   { value: SortedBy.Score, text: "Highest score (default)" },
@@ -26,7 +20,8 @@ export const Content = () => {
     askedAt,
     updatedAt,
     view,
-    vote,
+    upVotes,
+    downVotes,
     content,
     tags,
     user,
@@ -38,30 +33,10 @@ export const Content = () => {
     setSortedBy(newValue.target.value);
   };
 
-  const sortedAnswers = useMemo(() => {
-    return answers.sort((a, b) => {
-      switch (sortedBy) {
-        case SortedBy.Score:
-          return a.vote > b.vote ? -1 : a.vote < b.vote ? 1 : 0;
-        case SortedBy.Trending:
-          return a.vote > b.vote ? -1 : a.vote < b.vote ? 1 : 0;
-        case SortedBy.Modified:
-          return new Date(a.updatedAt) > new Date(b.updatedAt)
-            ? -1
-            : new Date(a.updatedAt) < new Date(b.updatedAt)
-            ? 1
-            : 0;
-        case SortedBy.Created:
-          return new Date(a.createdAt) < new Date(b.createdAt)
-            ? -1
-            : new Date(a.createdAt) > new Date(b.createdAt)
-            ? 1
-            : 0;
-        default:
-          return 0;
-      }
-    });
-  }, [sortedBy, answers]);
+  const sortedAnswers = useMemo(
+    () => answers.sort((a, b) => compareAnswers(a, b, sortedBy)),
+    [sortedBy, answers]
+  );
 
   return (
     <div className="w-content-x border-l border-l-black-225 p-[24px] mx-auto">
@@ -74,7 +49,7 @@ export const Content = () => {
       <div className="flex">
         <div className="w-main-bar">
           <QuestionAnswerItem
-            vote={vote}
+            vote={upVotes.length - downVotes.length}
             content={content}
             tags={tags}
             editedAt={updatedAt}
@@ -105,7 +80,7 @@ export const Content = () => {
 
           {sortedAnswers.map((answer) => (
             <QuestionAnswerItem
-              vote={answer.vote}
+              vote={answer.upVotes.length - answer.downVotes.length}
               content={answer.content}
               tags={[]}
               editedAt={answer.updatedAt}
