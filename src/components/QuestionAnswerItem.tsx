@@ -1,4 +1,8 @@
 import { Comment, User } from "types";
+import { ReactComponent as ArrowUpIcon } from "../icons/arrowUp.svg";
+import { ReactComponent as ArrowDownIcon } from "../icons/arrowDown.svg";
+import { ReactComponent as BookmarkIcon } from "../icons/bookmark.svg";
+import { ReactComponent as ActivityIcon } from "../icons/activity.svg";
 import { UserElement } from "./UserElement";
 
 interface QuestionAnswerItemProps {
@@ -20,8 +24,22 @@ export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
 }) => {
   return (
     <div className="flex">
-      <div className="pr-4">
-        <span className="text-black-600 text-subHeading font-bold">{vote}</span>
+      <div className="flex flex-col justify-start items-center pr-4">
+        <button className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5">
+          <ArrowUpIcon />
+        </button>
+        <span className="text-black-600 text-subHeading font-bold p-2">
+          {vote}
+        </span>
+        <button className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5">
+          <ArrowDownIcon />
+        </button>
+        <a className="text-black-500 hover:color-blue-200 p-2 mt-2" href="/">
+          <BookmarkIcon />
+        </a>
+        <a className="text-black-500 hover:color-blue-200 p-2" href="/">
+          <ActivityIcon />
+        </a>
       </div>
       <div className="flex flex-col pr-4 w-auto min-w-0">
         <div
