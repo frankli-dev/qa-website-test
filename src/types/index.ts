@@ -19,9 +19,10 @@ export type Answer = {
   id: string;
   vote: number;
   user: User;
-  answeredAt: string;
   content: string;
   comments: Comment[];
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type Question = {

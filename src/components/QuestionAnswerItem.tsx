@@ -1,4 +1,6 @@
 import { Comment, User } from "types";
+import * as DOMPurify from "dompurify";
+import classNames from "classnames";
 import { ReactComponent as ArrowUpIcon } from "../icons/arrowUp.svg";
 import { ReactComponent as ArrowDownIcon } from "../icons/arrowDown.svg";
 import { ReactComponent as BookmarkIcon } from "../icons/bookmark.svg";
@@ -10,8 +12,10 @@ interface QuestionAnswerItemProps {
   content: string;
   tags: string[];
   editedAt: string;
+  createdAt: string;
   user: User;
   comments: Comment[];
+  isAnswer?: boolean;
 }
 
 export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
@@ -19,11 +23,17 @@ export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
   content,
   tags,
   editedAt,
+  createdAt,
   user,
   comments,
+  isAnswer = false,
 }) => {
   return (
-    <div className="flex">
+    <div
+      className={classNames("flex py-[18px] w-full", {
+        "border-b border-b-black-200": isAnswer,
+      })}
+    >
       <div className="flex flex-col justify-start items-center pr-4">
         <button className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5">
           <ArrowUpIcon />
@@ -41,23 +51,25 @@ export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
           <ActivityIcon />
         </a>
       </div>
-      <div className="flex flex-col pr-4 w-auto min-w-0">
+      <div className="flex flex-col pr-4 w-auto min-w-0 w-full">
         <div
-          className="text-[15px] break-words"
-          dangerouslySetInnerHTML={{ __html: content }}
+          className="text-[15px] leading-[1.5] break-words overflow-auto [&_p]:mb-[1.1em] [&_code]:text-[13px] [&_code]:py-[2px] [&_code]:px-[4px] [&_code]:text-black-600 [&_code]:bg-black-200 [&_code]:rounded-[4px] [&_a]:text-blue-400 [&_a]:underline [&_pre]:bg-highlight [&_pre]:text-black-600 [&_pre]:p-[12px] [&_pre]:overflow-auto [&_pre_code]:bg-transparent"
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(content) }}
         />
-        <div className="flex my-6">
-          {tags.map((tag, index) => (
-            <a
-              key={index}
-              className="inline mr-[4px] px-[0.5em] py-[0.4em] rounded-md leading-none text-blue-600 bg-blue-100"
-              href="/"
-            >
-              {tag}
-            </a>
-          ))}
-        </div>
-        <div className="flex mt-4 mb-8">
+        {tags.length > 0 ? (
+          <div className="flex my-6">
+            {tags.map((tag, index) => (
+              <a
+                key={index}
+                className="inline mr-[4px] px-[0.5em] py-[0.4em] rounded-md leading-none text-blue-600 bg-blue-100"
+                href="/"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        ) : null}
+        <div className="flex mt-4 mb-8 w-full">
           <a href="/" className="text-black-400 mr-2">
             Share
           </a>

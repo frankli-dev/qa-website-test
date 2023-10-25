@@ -5,7 +5,8 @@ const answer_1: Answer = {
   id: "1",
   vote: 36,
   user: user_derek,
-  answeredAt: "2023-10-24T14:42:30.532Z",
+  createdAt: "2023-10-24T14:42:30.532Z",
+  updatedAt: "2023-10-24T14:42:30.532Z",
   content: `
     <p>Injected <code>req</code>object is shipped with listeners <code>.on()</code>.</p>
 
@@ -91,7 +92,8 @@ const answer_2: Answer = {
   id: "2",
   vote: 10,
   user: user_rashack,
-  answeredAt: "2023-10-24T14:42:30.532Z",
+  createdAt: "2023-10-24T14:42:30.532Z",
+  updatedAt: "2023-10-24T14:42:30.532Z",
   content: `
     <p>With express, you can try:</p>
   
@@ -108,7 +110,8 @@ const answer_3: Answer = {
   id: "3",
   vote: -4,
   user: user_andrew,
-  answeredAt: "2023-10-24T14:42:30.532Z",
+  createdAt: "2023-10-24T14:42:30.532Z",
+  updatedAt: "2023-10-24T14:42:30.532Z",
   content: `
     <p>You can set a <a href="https://nodejs.org/api/http.html#http_server_timeout" rel="nofollow">timeout</a> for requests on your server:</p>
     

@@ -34,6 +34,7 @@ module.exports = {
         "black-500": "hsl(210, 8%, 25%)",
         "black-600": "hsl(210, 8%, 5%)",
         black: "hsl(0, 0%, 0%)",
+        highlight: "hsl(0, 0%, 96.5%)",
       },
       animation: {
         bounce1: "bounce 1s infinite 200ms",
