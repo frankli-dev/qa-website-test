@@ -3,10 +3,7 @@ import { QuestionHeader } from "./QuestionHeader";
 import { SideBar } from "./SideBar";
 import { QuestionAnswerItem } from "./QuestionAnswerItem";
 import { useMemo, useState } from "react";
-
-interface ContentProps {
-  question: Question;
-}
+import { useQuestionContext } from "context/question";
 
 enum SortedBy {
   Score = "score",
@@ -22,7 +19,8 @@ const SortedByOptions: { value: SortedBy; text: string }[] = [
   { value: SortedBy.Oldest, text: "Date created (oldest first)" },
 ];
 
-export const Content: React.FC<ContentProps> = ({ question }) => {
+export const Content = () => {
+  const { question, onVoteQuestion, onVoteAnswer } = useQuestionContext();
   const {
     title,
     askedAt,
@@ -75,6 +73,7 @@ export const Content: React.FC<ContentProps> = ({ question }) => {
             createdAt={askedAt}
             user={user}
             comments={comments}
+            onVote={onVoteQuestion}
           />
           <div className="flex items-center justify-between my-[12px]">
             <h2 className="text-subHeading">{answers.length} Answers</h2>
@@ -107,6 +106,7 @@ export const Content: React.FC<ContentProps> = ({ question }) => {
               comments={answer.comments}
               key={answer.id}
               isAnswer
+              onVote={(isUpVote) => onVoteAnswer(answer.id, isUpVote)}
             />
           ))}
         </div>

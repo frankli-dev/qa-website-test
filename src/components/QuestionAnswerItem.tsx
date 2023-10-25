@@ -16,6 +16,7 @@ interface QuestionAnswerItemProps {
   user: User;
   comments: Comment[];
   isAnswer?: boolean;
+  onVote: (isUpVote: boolean) => void;
 }
 
 export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
@@ -27,6 +28,7 @@ export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
   user,
   comments,
   isAnswer = false,
+  onVote,
 }) => {
   return (
     <div
@@ -35,13 +37,19 @@ export const QuestionAnswerItem: React.FC<QuestionAnswerItemProps> = ({
       })}
     >
       <div className="flex flex-col justify-start items-center pr-4">
-        <button className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5">
+        <button
+          className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5"
+          onClick={() => onVote(true)}
+        >
           <ArrowUpIcon />
         </button>
         <span className="text-black-600 text-subHeading font-bold p-2">
           {vote}
         </span>
-        <button className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5">
+        <button
+          className="text-black-500 border border-black-225 rounded-full hover:bg-blue-200 p-2.5"
+          onClick={() => onVote(false)}
+        >
           <ArrowDownIcon />
         </button>
         <a className="text-black-500 hover:color-blue-200 p-2 mt-2" href="/">
