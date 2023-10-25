@@ -2,7 +2,7 @@ import { Button } from "./Button";
 
 export const Header = () => {
   return (
-    <div className="fixed flex h-header top-0 left-0 w-full bg-white border-t-2 border-t-primary border-b border-b-black-225 items-center z-100">
+    <div className="fixed flex h-header top-0 left-0 w-full bg-white border-t-2 border-t-primary border-b border-b-black-225 items-center z-[100]">
       <div className="w-[80rem] flex mx-auto my-0 items-center">
         <a
           href="https://stackoverflow.com"
